@@ -7,12 +7,15 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import dashboardStyles from "./styles";
 import Sidebar from "../../../Components/Sidebar";
 import Footer from "../../../Components/MinimalFooter";
+import Profile from "./components/Profile";
+import { fetchDoctorData } from "./functions";
 
 export default function DoctorDashboard(props) {
   const classes = dashboardStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [view, setView] = React.useState(0);
+  const [docData, setDocData] = React.useState({});
 
   /*
   Views: 
@@ -33,10 +36,25 @@ export default function DoctorDashboard(props) {
     setView(index);
   };
 
+  React.useEffect(() => {
+    fetchDoctorData(
+      props.props.match.params.docId,
+      props.props.history,
+      setDocData,
+      setLoading
+    );
+  }, [props.props.history, props.props.match.params.docId, view]);
+
   const renderView = (currentView) => {
     switch (currentView) {
       case 0:
-        return <div>this is profile section</div>;
+        return (
+          <Profile
+            loading={loading}
+            docData={docData}
+            ID={props.props.match.params.docId}
+          />
+        );
       case 1:
         return <div>this is profile section</div>;
       case 2:
@@ -57,7 +75,6 @@ export default function DoctorDashboard(props) {
         </div>
       ) : (
         <div className={classes.root}>
-         
           <Sidebar
             handleDrawerToggle={handleDrawerToggle}
             state={mobileOpen}
