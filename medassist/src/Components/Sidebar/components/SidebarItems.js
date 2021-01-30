@@ -6,7 +6,13 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@material-ui/core";
-import { Dashboard, WatchLater, Book } from "@material-ui/icons";
+import {
+  Dashboard,
+  WatchLater,
+  Book,
+  Update,
+  AccountBalanceWallet,
+} from "@material-ui/icons";
 
 import sidebarStyles from "../styles";
 
@@ -54,6 +60,33 @@ export default function SidebarItems(props) {
             <Book />
           </ListItemIcon>
           <ListItemText primary={"Patients Log"} />
+        </ListItem>
+        <ListItem
+          button="true"
+          selected={props.view === 3}
+          onClick={(event) => {
+            props.handleViewChange(event, 3);
+          }}
+        >
+          <ListItemIcon>
+            <AccountBalanceWallet />
+          </ListItemIcon>
+          <ListItemText primary={"Transaction Log"} />
+        </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListItem
+          button="true"
+          selected={props.view === 4}
+          onClick={(event) => {
+            props.handleViewChange(event, 4);
+          }}
+        >
+          <ListItemIcon>
+            <Update />
+          </ListItemIcon>
+          <ListItemText primary={"Update Info"} />
         </ListItem>
       </List>
     </div>

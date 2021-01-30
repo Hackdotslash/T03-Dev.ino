@@ -10,6 +10,7 @@ import Footer from "../../../Components/MinimalFooter";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import Appointments from "./components/Appointments";
+import Update from "./components/Update";
 
 import { fetchDoctorData } from "./functions";
 
@@ -70,6 +71,16 @@ export default function DoctorDashboard(props) {
         );
       case 2:
         return <div>this is profile section</div>;
+      case 3:
+        return <div>this is profile section</div>;
+      case 4:
+        return (
+          <Update
+            docData={docData}
+            id={props.props.match.params.docId}
+            setDocData={setDocData}
+          />
+        );
 
       default:
         throw new Error("Unknown View");
