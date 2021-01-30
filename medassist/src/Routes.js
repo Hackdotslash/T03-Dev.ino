@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import customTheme from "./Components/Theme";
 
+// importing custom components
+import LandingPage from "./Pages/LadingPage";
 
 export default function Routes() {
   return (
@@ -27,6 +29,9 @@ export default function Routes() {
           </Route>
 
           {/* ========================== PRODUCTION =====================  */}
+
+          {/* Landing page  */}
+          <Route exact path="/home" component={LandingPage} />
 
           {/* Page not found */}
           <Route path="/">
