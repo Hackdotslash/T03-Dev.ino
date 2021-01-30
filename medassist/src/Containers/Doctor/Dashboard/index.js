@@ -4,23 +4,38 @@
 import React from "react";
 import Backdrop from "@material-ui/core/Backdrop";
 import CircularProgress from "@material-ui/core/CircularProgress";
+
+// custom imports
 import dashboardStyles from "./styles";
+import Navbar from "./components/Navbar";
 import Sidebar from "../../../Components/Sidebar";
 import Footer from "../../../Components/MinimalFooter";
 import Profile from "./components/Profile";
-import Navbar from "./components/Navbar";
-import Appointments from "./components/Appointments";
 import Update from "./components/Update";
-import PatientLog from "./components/PatientLog";
-
 import { fetchDoctorData } from "./functions";
+import Appointments from "./components/Appointments";
+import UploadDocs from "./components/UploadDocs";
+import PatientLog from "./components/PatientLog";
+import QueryForm from "./components/QueryForm";
+import TransactionLogs from "./components/TransactionLogs";
+// import Preloader from "./components/Preloader"
 
 export default function DoctorDashboard(props) {
   const classes = dashboardStyles();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [docData, setDocData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
   const [view, setView] = React.useState(0);
-  const [docData, setDocData] = React.useState({});
+
+
+  React.useEffect(() => {
+    fetchDoctorData(
+      props.props.match.params.docId,
+      props.props.history,
+      setDocData,
+      setLoading
+    );
+  }, [props.props.history, props.props.match.params.docId,view]);
 
   /*
   Views: 
@@ -33,6 +48,7 @@ export default function DoctorDashboard(props) {
   6 - Query
   */
 
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -40,15 +56,6 @@ export default function DoctorDashboard(props) {
   const handleViewChange = (event, index) => {
     setView(index);
   };
-
-  React.useEffect(() => {
-    fetchDoctorData(
-      props.props.match.params.docId,
-      props.props.history,
-      setDocData,
-      setLoading
-    );
-  }, [props.props.history, props.props.match.params.docId, view]);
 
   const renderView = (currentView) => {
     switch (currentView) {
@@ -77,8 +84,10 @@ export default function DoctorDashboard(props) {
             docId={props.props.match.params.docId}
           />
         );
+
       case 3:
-        return <div>this is profile section</div>;
+        return <TransactionLogs transactionData={docData.TransactionLogs} />;
+
       case 4:
         return (
           <Update
@@ -86,6 +95,20 @@ export default function DoctorDashboard(props) {
             id={props.props.match.params.docId}
             setDocData={setDocData}
           />
+        );
+
+      case 5:
+        return (
+          <UploadDocs
+            docData={docData}
+            setDocData={setDocData}
+            ID={props.props.match.params.docId}
+          />
+        );
+
+      case 6:
+        return (
+          <QueryForm docData={docData} ID={props.props.match.params.docId} />
         );
 
       default:
@@ -109,7 +132,6 @@ export default function DoctorDashboard(props) {
             gender={docData.Gender}
             name={docData.Name}
           />
-
           <Sidebar
             handleDrawerToggle={handleDrawerToggle}
             state={mobileOpen}

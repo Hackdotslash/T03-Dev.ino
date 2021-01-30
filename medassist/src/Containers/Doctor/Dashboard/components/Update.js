@@ -73,6 +73,59 @@ export default function Update(props) {
   const [newSpecs, setNewSpecs] = React.useState([]);
   const [snackOpen, setSnackOpen] = React.useState(false);
 
+  // =================== features to be added later ===================== //
+  // const [currencies, setCurrencies] = React.useState([]);
+  // const [feesUSD, setfeesUSD] = React.useState(props.docData.feesUSD);
+  // const [fees, setfees] = React.useState(0);
+  // const [currType, setCurrType] = React.useState("USD");
+
+  // ======= ---- Axios to fetch country ========----------------
+  // React.useEffect(() => {
+  //   axios.get("https://api.exchangeratesapi.io/latest").then((response) => {
+  //     // Initialized with 'EUR' because the base currency is 'EUR'
+  //     // and it is not included in the response
+  //     const currencyAr = [];
+  //     for (const key in response.data.rates) {
+  //       currencyAr.push(key);
+  //     }
+  //     setCurrencies(currencyAr);
+  //   });
+  // }, []);
+
+  // const handleChange = (event) => {
+  //   const data = event.target.value;
+
+  //   axios
+  //     .get(`https://api.openrates.io/latest?base=${currType}&symbols=USD`)
+  //     .then((response) => {
+  //       const result = data * response.data.rates["USD"];
+  //       console.log(result);
+  //       props.setDocData({ ...props.docData, feesUSD: result });
+  //       setfeesUSD(result);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Opps", err.message);
+  //     });
+  // };
+
+  // const handleChangeCurr = (event) => {
+  //   const data = event.target.value;
+  //   console.log(data);
+  //   setCurrType(data);
+
+  //   axios
+  //     .get(`https://api.openrates.io/latest?base=${data}&symbols=USD`)
+  //     .then((response) => {
+  //       const result = fees * response.data.rates["USD"];
+  //       console.log(result);
+  //       props.setDocData({ ...props.docData, feesUSD: result });
+  //       setfeesUSD(result);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Opps", err.message);
+  //     });
+  // };
+
   const handleAddButton = () => {
     setNewSpecs([...newSpecs, { spec: "" }]);
   };
@@ -259,6 +312,95 @@ export default function Update(props) {
               </Grid>
             </Grid>
           </Grid>
+
+          {/* ============================== feature updates to be released later ============================================ */}
+
+          {/* City 
+          <Grid item xs={6}>
+            <TextField
+              fullWidth
+              id="country"
+              name="City"
+              label="City"
+              variant="outlined"
+              defaultValue={props.docData.City}
+              onChange={onChange}
+            />
+          </Grid>*/}
+
+          {/* /* Zipcode */}
+
+          {/* <Grid item xs={6}>
+            <TextField
+              fullWidth
+              id="zip"
+              name="ZipCode"
+              label="Zipcode"
+              variant="outlined"
+              defaultValue={props.docData.ZipCode}
+              onChange={onChange}
+            />
+          </Grid> */}
+
+          {/* ------- Country --------- */}
+          {/* <Grid item xs={12}>
+            <TextField
+              fullWidth
+              id="zip"
+              name="Country"
+              label="Country"
+              variant="outlined"
+              defaultValue={props.docData.Country}
+              onChange={onChange}
+            />
+          </Grid> */}
+
+          {/* -------------- Consultation Fees --------------- */}
+          {/* Fees in local currency
+          <Grid item xs={6}>
+            <TextField
+              id="fees"
+              name="fees"
+              label="Enter Consultation Fees"
+              value={fees}
+              color="primary"
+              fullWidth
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <select
+                      name="from"
+                      onChange={handleChangeCurr}
+                      value={currType}
+                    >
+                      {currencies.map((cur) => (
+                        <option key={cur}>{cur}</option>
+                      ))}
+                    </select>
+                  </InputAdornment>
+                ),
+              }}
+              onChange={(e) => {
+                setfees(e.target.value);
+              }}
+              onBlur={handleChange}
+            />
+          </Grid> */}
+
+          {/* --------------- Fees in USD ----------- */}
+
+          {/* <Grid item xs={6}>
+            <TextField
+              fullWidth
+              id="zip"
+              name="feesUSD"
+              label="Current Fees in USD"
+              variant="outlined"
+              value={feesUSD}
+            />
+          </Grid> */}
+          {/* ============================================================================ */}
 
           {/*..... Spcialization .....*/}
           {Object.keys(props.docData.Specialization).map((key, index) => (

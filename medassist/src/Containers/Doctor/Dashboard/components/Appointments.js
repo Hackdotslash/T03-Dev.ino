@@ -13,6 +13,7 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core";
+import VideoCall from "./VideoCall";
 import moment from "moment";
 // import { checkAppDate } from "../functions";
 
@@ -49,7 +50,8 @@ export default function Appointments(props) {
   const [schedule, setSchedule] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
+  const [roomName, setRoomName] = React.useState("");
+  const [onCall, setOnCall] = React.useState(false);
   // ---------------- add the feature later
   // const [attended, setAttended] = React.useState(false);
   const [currentSlot, setCurrentSlot] = React.useState({
@@ -68,6 +70,18 @@ export default function Appointments(props) {
 
   function handleClick(event) {
     setCurrentDay(event.currentTarget.value);
+  }
+
+  function handleVideoCall(e) {
+    e.preventDefault();
+    var room = e.currentTarget.value + "-" + props.docId;
+    console.log("curent slot going to video call ",e.currentTarget.name);
+    setRoomName(room);
+    setCurrentSlot({
+      time: e.currentTarget.name,
+      patId: e.currentTarget.value,
+    });
+    setOnCall(true);
   }
 
   const indexToDay = (dayIndex) => {
@@ -153,6 +167,7 @@ export default function Appointments(props) {
                 color="primary"
                 variant="contained"
                 disabled={handleDisable(key, id)}
+                onClick={handleVideoCall}
                 value={id}
                 name={slot}
               >
@@ -171,107 +186,129 @@ export default function Appointments(props) {
 
   return (
     <>
-      <React.Fragment>
-        <Typography component="h1" variant="h4" color="secondary" gutterBottom>
-          Appointments
-        </Typography>
+      {onCall ? (
+        <VideoCall
+          roomName={roomName}
+          docId={props.docId}
+          slot={currentSlot.time}
+          day={currentDay}
+          patId={currentSlot.patId}
+          docData={props.docData}
+          setDocData={props.setDocData}
+          setOnCall={setOnCall}
+          setView = {props.setView}
+        />
+      ) : (
+        <React.Fragment>
+          <Typography
+            component="h1"
+            variant="h4"
+            color="secondary"
+            gutterBottom
+          >
+            Appointments
+          </Typography>
 
-        {Object.entries(schedule).length === 0 ? (
-          <Paper className={classes.default}>
-            <Typography
-              variant="h4"
-              color="secondary"
-              style={{ textAlign: "center" }}
-            >
-              You don't see patients on {indexToDay(currentDay)}
-            </Typography>
-          </Paper>
-        ) : (
-          <>
-            <Typography
-              variant="h6"
-              color="secondary"
-              style={{ textAlign: "center" }}
-            >
-              {indexToDay(currentDay)}'s Schedule
-            </Typography>
-            <Paper className={classes.root}>
-              <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table">
-                  <TableHead>
-                    <TableRow>
-                      {columns.map((column) => (
-                        <TableCell
-                          key={column.id}
-                          align={column.align}
-                          style={{ minWidth: column.minWidth }}
-                        >
-                          {column.label}
-                        </TableCell>
-                      ))}
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {schedule
-                      .slice(
-                        page * rowsPerPage,
-                        page * rowsPerPage + rowsPerPage
-                      )
-                      .map((row) => {
-                        return (
-                          <TableRow
-                            hover
-                            role="checkbox"
-                            tabIndex={-1}
-                            key={row.code}
-                          >
-                            {columns.map((column) => {
-                              const value = row[column.id];
-                              return (
-                                <TableCell key={column.id} align={column.align}>
-                                  {column.format && typeof value === "number"
-                                    ? column.format(value)
-                                    : value}
-                                </TableCell>
-                              );
-                            })}
-                          </TableRow>
-                        );
-                      })}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-              <TablePagination
-                rowsPerPageOptions={[5, 10, 25, 100]}
-                component="div"
-                count={schedule.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-              />
+          {Object.entries(schedule).length === 0 ? (
+            <Paper className={classes.default}>
+              <Typography
+                variant="h4"
+                color="secondary"
+                style={{ textAlign: "center" }}
+              >
+                You don't see patients on {indexToDay(currentDay)}
+              </Typography>
             </Paper>
-          </>
-        )}
-
-        <Grid container spacing={1} style={{ marginTop: 16 }}>
-          {Object.keys(props.appData).map((key, value) => (
+          ) : (
             <>
-              <Grid item>
-                <Button
-                  onClick={handleClick}
-                  value={key}
-                  variant="contained"
-                  color="primary"
-                  style={{ width: 100 }}
-                >
-                  {indexToDay(key)}
-                </Button>
-              </Grid>
+              <Typography
+                variant="h6"
+                color="secondary"
+                style={{ textAlign: "center" }}
+              >
+                {indexToDay(currentDay)}'s Schedule
+              </Typography>
+              <Paper className={classes.root}>
+                <TableContainer className={classes.container}>
+                  <Table stickyHeader aria-label="sticky table">
+                    <TableHead>
+                      <TableRow>
+                        {columns.map((column) => (
+                          <TableCell
+                            key={column.id}
+                            align={column.align}
+                            style={{ minWidth: column.minWidth }}
+                          >
+                            {column.label}
+                          </TableCell>
+                        ))}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                      {schedule
+                        .slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        )
+                        .map((row) => {
+                          return (
+                            <TableRow
+                              hover
+                              role="checkbox"
+                              tabIndex={-1}
+                              key={row.code}
+                            >
+                              {columns.map((column) => {
+                                const value = row[column.id];
+                                return (
+                                  <TableCell
+                                    key={column.id}
+                                    align={column.align}
+                                  >
+                                    {column.format && typeof value === "number"
+                                      ? column.format(value)
+                                      : value}
+                                  </TableCell>
+                                );
+                              })}
+                            </TableRow>
+                          );
+                        })}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+                <TablePagination
+                  rowsPerPageOptions={[5, 10, 25, 100]}
+                  component="div"
+                  count={schedule.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  onChangePage={handleChangePage}
+                  onChangeRowsPerPage={handleChangeRowsPerPage}
+                />
+              </Paper>
             </>
-          ))}
-        </Grid>
-      </React.Fragment>
+          )}
+
+          <Grid container spacing={1} style={{ marginTop: 16 }}>
+            {Object.keys(props.appData).map((key, value) => (
+              <>
+                <Grid item>
+                  <Button
+                    onClick={handleClick}
+                    value={key}
+                    variant="contained"
+                    color="primary"
+                    style={{ width: 100 }}
+                  >
+                    {indexToDay(key)}
+                  </Button>
+                </Grid>
+              </>
+            ))}
+          </Grid>
+        </React.Fragment>
+      )}
     </>
   );
 }

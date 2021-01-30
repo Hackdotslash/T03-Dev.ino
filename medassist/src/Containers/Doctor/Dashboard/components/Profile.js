@@ -104,7 +104,6 @@ export default function Profile(props) {
     setOpen(true);
   };
 
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -346,7 +345,11 @@ export default function Profile(props) {
         }}
       >
         <Fade in={open}>
-          <img src={currentImage} alt="docs" className={classes.imgSelected} />
+          <img
+            src={currentImage}
+            alt="docs"
+            className={classes.imgSelected}
+          />
         </Fade>
       </Modal>
     </div>

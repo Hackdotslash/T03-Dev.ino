@@ -84,7 +84,6 @@ export default function Review(props) {
 
           <div>
             <List dense>
-              Time in GMT
               {Object.keys(schedule).map((key) => (
                 <ListItem>
                   <ListItemText

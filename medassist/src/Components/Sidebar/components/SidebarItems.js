@@ -10,13 +10,28 @@ import {
   Dashboard,
   WatchLater,
   Book,
+  ExitToApp,
   Update,
+  ChatBubbleOutline,
   AccountBalanceWallet,
 } from "@material-ui/icons";
+
+import CloudUploadOutlinedIcon from "@material-ui/icons/CloudUploadOutlined";
+import firebase from "firebase";
 
 import sidebarStyles from "../styles";
 
 export default function SidebarItems(props) {
+  function handleClick() {
+    firebase
+      .auth()
+      .signOut()
+      .then()
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   const classes = sidebarStyles();
   return (
     <div>
@@ -61,6 +76,7 @@ export default function SidebarItems(props) {
           </ListItemIcon>
           <ListItemText primary={"Patients Log"} />
         </ListItem>
+
         <ListItem
           button="true"
           selected={props.view === 3}
@@ -87,6 +103,39 @@ export default function SidebarItems(props) {
             <Update />
           </ListItemIcon>
           <ListItemText primary={"Update Info"} />
+        </ListItem>
+
+        <ListItem
+          button="true"
+          selected={props.view === 5}
+          onClick={(event) => {
+            props.handleViewChange(event, 5);
+          }}
+        >
+          <ListItemIcon>
+            <CloudUploadOutlinedIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Upload Documents"} />
+        </ListItem>
+
+        <ListItem
+          button="true"
+          selected={props.view === 6}
+          onClick={(event) => {
+            props.handleViewChange(event, 6);
+          }}
+        >
+          <ListItemIcon>
+            <ChatBubbleOutline />
+          </ListItemIcon>
+          <ListItemText primary={"Query"} />
+        </ListItem>
+
+        <ListItem button="true" onClick={handleClick}>
+          <ListItemIcon>
+            <ExitToApp />
+          </ListItemIcon>
+          <ListItemText primary={"Log Out"} />
         </ListItem>
       </List>
     </div>

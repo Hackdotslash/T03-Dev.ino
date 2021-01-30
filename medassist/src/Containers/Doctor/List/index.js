@@ -16,10 +16,11 @@ import {
 import { Link } from "react-router-dom";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 
-// ---------------- custom imports
+// ---------------- custom imports 
 import DepartmentDoctor from "./functions";
 import ListStyles from "./styles";
 import CardPreloader from "./components/CardPreloader";
+
 
 export default function List(props) {
   const classes = ListStyles();
@@ -27,11 +28,9 @@ export default function List(props) {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
     DepartmentDoctor(props.department, setData, setLoading);
   }, [props.department]);
-
-  console.log(doctorData);
 
   return (
     <React.Fragment>
