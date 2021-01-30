@@ -10,6 +10,8 @@ import DoctorLoginPage from "./Pages/DoctorLoginPage";
 import DoctorDashboardPage from "./Pages/DoctorDashboardPage";
 import DoctorListPage from "./Pages/DoctorListPage";
 import AdminLogin from "./Pages/AdminLoginPage";
+import PatientForm from "./Pages/PatientForm";
+
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -32,6 +34,13 @@ export default function Routes() {
           </Route>
 
           {/* ========================== PRODUCTION =====================  */}
+
+          {/* Patient Appointment Form */}
+          <Route
+            exact
+            path="/patient/form/:department/:docId/:docName"
+            component={PatientForm}
+          />
 
           {/* Doctors list of particular department */}
           <Route
