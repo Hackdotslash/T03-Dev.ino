@@ -5,6 +5,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import customTheme from "./Components/Theme";
+import DoctorRegistrationPage from "./Pages/DoctorRegistrationPage";
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -18,9 +19,7 @@ export default function Routes() {
 
           {/* Krishna's Testing page */}
           <Route exact path="/krishna/test">
-            <div style={{ height: "80vh", margin: "10%" }}>
-              Test Krishna
-            </div>
+            <div style={{ height: "80vh", margin: "10%" }}>Test Krishna</div>
           </Route>
 
           {/* Ekta's Testing page */}
@@ -29,6 +28,12 @@ export default function Routes() {
           </Route>
 
           {/* ========================== PRODUCTION =====================  */}
+          {/* Doctor's Registration form */}
+          <Route
+            exact
+            path="/doctor/register"
+            component={DoctorRegistrationPage}
+          />
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
@@ -37,7 +42,6 @@ export default function Routes() {
           <Route path="/">
             <div>Error 404: Page not found</div>
           </Route>
-
         </Switch>
       </Router>
     </MuiThemeProvider>
