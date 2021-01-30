@@ -8,7 +8,7 @@ import customTheme from "./Components/Theme";
 import DoctorRegistrationPage from "./Pages/DoctorRegistrationPage";
 import DoctorLoginPage from "./Pages/DoctorLoginPage";
 import DoctorDashboardPage from "./Pages/DoctorDashboardPage";
-
+import DoctorListPage from "./Pages/DoctorListPage";
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -32,6 +32,12 @@ export default function Routes() {
 
           {/* ========================== PRODUCTION =====================  */}
 
+          {/* Doctors list of particular department */}
+          <Route
+            exact
+            path="/department/doctors/:deptName"
+            component={DoctorListPage}
+          />
           {/* Doctor's Registration form */}
           <Route
             exact
