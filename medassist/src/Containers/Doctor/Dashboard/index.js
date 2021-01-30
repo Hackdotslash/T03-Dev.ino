@@ -8,6 +8,8 @@ import dashboardStyles from "./styles";
 import Sidebar from "../../../Components/Sidebar";
 import Footer from "../../../Components/MinimalFooter";
 import Profile from "./components/Profile";
+import Navbar from "./components/Navbar";
+
 import { fetchDoctorData } from "./functions";
 
 export default function DoctorDashboard(props) {
@@ -75,6 +77,13 @@ export default function DoctorDashboard(props) {
         </div>
       ) : (
         <div className={classes.root}>
+          <Navbar
+            handleDrawerToggle={handleDrawerToggle}
+            state={mobileOpen}
+            gender={docData.Gender}
+            name={docData.Name}
+          />
+
           <Sidebar
             handleDrawerToggle={handleDrawerToggle}
             state={mobileOpen}
