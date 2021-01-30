@@ -9,6 +9,7 @@ import Sidebar from "../../../Components/Sidebar";
 import Footer from "../../../Components/MinimalFooter";
 import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
+import Appointments from "./components/Appointments";
 
 import { fetchDoctorData } from "./functions";
 
@@ -58,7 +59,15 @@ export default function DoctorDashboard(props) {
           />
         );
       case 1:
-        return <div>this is profile section</div>;
+        return (
+          <Appointments
+            appData={docData.Schedule}
+            docData={docData}
+            setDocData={setDocData}
+            docId={props.props.match.params.docId}
+            setView={setView}
+          />
+        );
       case 2:
         return <div>this is profile section</div>;
 
