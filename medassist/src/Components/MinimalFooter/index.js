@@ -15,7 +15,7 @@ function Copyright() {
         Terms and Conditions
       </Link>
       <span style={{ marginLeft: 8, marginRight: 8, fontSize: 18 }}> | </span>
-      <span className={classes.text}>consultUS</span>
+      <span className={classes.text}>medassist</span>
       <span style={{ marginLeft: 8, marginRight: 8, fontSize: 18 }}> | </span>
       {"Copyright © "}
       <Link color="inherit" href="https://teamdevino.com/">

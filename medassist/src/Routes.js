@@ -7,6 +7,8 @@ import { MuiThemeProvider } from "@material-ui/core/styles";
 import customTheme from "./Components/Theme";
 import DoctorRegistrationPage from "./Pages/DoctorRegistrationPage";
 import DoctorLoginPage from "./Pages/DoctorLoginPage";
+import DoctorDashboardPage from "./Pages/DoctorDashboardPage";
+
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -39,6 +41,13 @@ export default function Routes() {
 
           {/* Doctor's Login Page */}
           <Route exact path="/doctor/login" component={DoctorLoginPage} />
+
+          {/* Doctor's Dashboard */}
+          <Route
+            exact
+            path="/doctor/dashboard/:docId"
+            component={DoctorDashboardPage}
+          />
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
