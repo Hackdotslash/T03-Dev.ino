@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import customTheme from "./Components/Theme";
 import DoctorRegistrationPage from "./Pages/DoctorRegistrationPage";
+import DoctorLoginPage from "./Pages/DoctorLoginPage";
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -28,12 +29,16 @@ export default function Routes() {
           </Route>
 
           {/* ========================== PRODUCTION =====================  */}
+
           {/* Doctor's Registration form */}
           <Route
             exact
             path="/doctor/register"
             component={DoctorRegistrationPage}
           />
+
+          {/* Doctor's Login Page */}
+          <Route exact path="/doctor/login" component={DoctorLoginPage} />
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
