@@ -9,6 +9,7 @@ import DoctorRegistrationPage from "./Pages/DoctorRegistrationPage";
 import DoctorLoginPage from "./Pages/DoctorLoginPage";
 import DoctorDashboardPage from "./Pages/DoctorDashboardPage";
 import DoctorListPage from "./Pages/DoctorListPage";
+import AdminLogin from "./Pages/AdminLoginPage";
 
 // importing custom components
 import LandingPage from "./Pages/LadingPage";
@@ -54,6 +55,9 @@ export default function Routes() {
             path="/doctor/dashboard/:docId"
             component={DoctorDashboardPage}
           />
+
+          {/* Admin Login */}
+          <Route exact path="/admin/login" component={AdminLogin} />
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
