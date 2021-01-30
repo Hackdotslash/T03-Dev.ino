@@ -11,6 +11,7 @@ import Profile from "./components/Profile";
 import Navbar from "./components/Navbar";
 import Appointments from "./components/Appointments";
 import Update from "./components/Update";
+import PatientLog from "./components/PatientLog";
 
 import { fetchDoctorData } from "./functions";
 
@@ -70,7 +71,12 @@ export default function DoctorDashboard(props) {
           />
         );
       case 2:
-        return <div>this is profile section</div>;
+        return (
+          <PatientLog
+            appData={docData.PatientLog}
+            docId={props.props.match.params.docId}
+          />
+        );
       case 3:
         return <div>this is profile section</div>;
       case 4:
