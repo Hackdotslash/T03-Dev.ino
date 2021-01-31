@@ -17,7 +17,6 @@ import Appointments from "./components/Appointments";
 import UploadDocs from "./components/UploadDocs";
 import PatientLog from "./components/PatientLog";
 import QueryForm from "./components/QueryForm";
-import TransactionLogs from "./components/TransactionLogs";
 // import Preloader from "./components/Preloader"
 
 export default function DoctorDashboard(props) {
@@ -27,7 +26,6 @@ export default function DoctorDashboard(props) {
   const [loading, setLoading] = React.useState(true);
   const [view, setView] = React.useState(0);
 
-
   React.useEffect(() => {
     fetchDoctorData(
       props.props.match.params.docId,
@@ -35,7 +33,7 @@ export default function DoctorDashboard(props) {
       setDocData,
       setLoading
     );
-  }, [props.props.history, props.props.match.params.docId,view]);
+  }, [props.props.history, props.props.match.params.docId, view]);
 
   /*
   Views: 
@@ -47,7 +45,6 @@ export default function DoctorDashboard(props) {
   5 - Upload Docs
   6 - Query
   */
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -86,7 +83,7 @@ export default function DoctorDashboard(props) {
         );
 
       case 3:
-        return <TransactionLogs transactionData={docData.TransactionLogs} />;
+        return <div>This is Transaction Log</div>;
 
       case 4:
         return (
