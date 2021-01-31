@@ -12,6 +12,7 @@ import DoctorListPage from "./Pages/DoctorListPage";
 import AdminLogin from "./Pages/AdminLoginPage";
 import PatientForm from "./Pages/PatientForm";
 import AdminDashboard from "./Pages/AdminDashboardPage";
+import PatientMeetingPage from "./Pages/PatientMeetingPage";
 
 
 // importing custom components
@@ -74,6 +75,13 @@ export default function Routes() {
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
+
+          {/* Patient's Meeting page */}
+          <Route
+            exact
+            path="/patient/meeting/:patId/:docId"
+            component={PatientMeetingPage}
+          />
 
           {/* Page not found */}
           <Route path="/">

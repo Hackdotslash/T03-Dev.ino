@@ -15,6 +15,7 @@
     "date-fns": "^2.16.1",
     "emailjs-com": "^2.6.4",
     "firebase": "^8.2.5",
+    "jspdf": "^2.3.0",
     "material-ui-phone-number": "^2.2.6",
     "rc-time-picker": "^3.7.3",
     "react": "^17.0.1",
