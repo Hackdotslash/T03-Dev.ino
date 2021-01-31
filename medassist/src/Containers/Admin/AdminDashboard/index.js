@@ -16,6 +16,16 @@ import SideNavList from "./components/SideNavList";
 import { Backdrop, CircularProgress } from "@material-ui/core";
 
 import dashboardStyles from "./styles";
+import DashboardView from "./components/Dashboard";
+import VerificationView from "./components/Verification";
+import DoctorProfileView from "./components/DoctorProfile";
+import { getDashboardData } from "./functions";
+import Doctor from "./components/Doctor";
+import Feedbacks from "./components/Feedbacks";
+import FinanceLogs from "./components/FinanceLogs";
+import DoctorLogs from "./components/DoctorLogs";
+import TransactionLogs from "./components/TransactionLogs";
+import PatientLog from "../../Doctor/Dashboard/components/PatientLog";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 function Copyright() {
@@ -23,7 +33,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://thekaspertech.com/">
-        medassist
+        consultUS
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -35,8 +45,34 @@ export default function Dashboard(props) {
   const classes = dashboardStyles();
   const [open, setOpen] = React.useState(true);
 
+  const [unverifiedDoctors, setUnverifiedDoctors] = React.useState({});
+  const [verifiedDoctors, setVerifiedDoctors] = React.useState({});
+  const [count, setCount] = React.useState({
+    verified: 0,
+    nonVerified: 0,
+    deptCount: 0,
+    patientCount: 0,
+    departments: [],
+  });
   const [loading, setLoading] = React.useState(true);
   // consultUS charges
+  const [charges, setCharges] = React.useState(0);
+
+  const [doctor, setDoctor] = React.useState({});
+  const [doctorProfileId, setDoctorProfileId] = React.useState("");
+
+  //----------- Fetching the unverified doctor data
+  React.useEffect(() => {
+    getDashboardData(
+      setUnverifiedDoctors,
+      setVerifiedDoctors,
+      setLoading,
+      setCount,
+      setCharges,
+      props.history
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -75,10 +111,64 @@ export default function Dashboard(props) {
   const renderView = (currentView) => {
     switch (currentView) {
       case 0:
-        return "view"
+        return <DashboardView count={count} charges={charges} />;
       case 1:
-        return "View";
+        return (
+          <VerificationView
+            doctors={unverifiedDoctors}
+            view={view}
+            setView={setView}
+            setDoctorProfileId={setDoctorProfileId}
+            setDoctor={setDoctor}
+          />
+        );
+      case 2:
+        return (
+          <Doctor
+            doctors={verifiedDoctors}
+            view={view}
+            setView={setView}
+            setDoctorProfileId={setDoctorProfileId}
+            setDoctor={setDoctor}
+          />
+        );
+      case 3:
+        return <Feedbacks />;
+      case 4:
+        return (
+          <FinanceLogs
+            doctors={verifiedDoctors}
+            view={view}
+            setView={setView}
+            setDoctorProfileId={setDoctorProfileId}
+            setDoctor={setDoctor}
+          />
+        );
+      case 8:
+        return (
+          <DoctorLogs
+            doctor={doctor}
+            doctorProfileId={doctorProfileId}
+            setView={setView}
+          />
+        );
+      case 9:
+        return (
+          <DoctorProfileView
+            doctor={doctor}
+            setUnverfiedDoctors={setUnverifiedDoctors}
+            setVerifiedDoctors={setVerifiedDoctors}
+            doctorProfileId={doctorProfileId}
+            setView={setView}
+          />
+        );
 
+      case 10:
+        return (
+          <TransactionLogs doctorProfileId={doctorProfileId} doctor={doctor} />
+        );
+      case 11:
+        return <PatientLog appData={doctor[doctorProfileId].PatientLog} />;
       default:
         throw new Error("Unknown View");
     }

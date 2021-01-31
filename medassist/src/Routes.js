@@ -11,6 +11,7 @@ import DoctorDashboardPage from "./Pages/DoctorDashboardPage";
 import DoctorListPage from "./Pages/DoctorListPage";
 import AdminLogin from "./Pages/AdminLoginPage";
 import PatientForm from "./Pages/PatientForm";
+import AdminDashboard from "./Pages/AdminDashboardPage";
 
 
 // importing custom components
@@ -67,6 +68,9 @@ export default function Routes() {
 
           {/* Admin Login */}
           <Route exact path="/admin/login" component={AdminLogin} />
+
+          {/* Admin Dashboard */}
+          <Route exact path="/admin/dashboard" component={AdminDashboard} />
 
           {/* Landing page  */}
           <Route exact path="/home" component={LandingPage} />
