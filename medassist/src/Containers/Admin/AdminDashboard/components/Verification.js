@@ -65,6 +65,7 @@ export default function Verification(props) {
   React.useEffect(() => {
     if (props.doctors !== undefined && props.doctors !== {}) {
       let tempRows = [];
+      console.log(props.doctors);
       // eslint-disable-next-line array-callback-return
       Object.keys(props.doctors).map((key) => {
         tempRows.push(

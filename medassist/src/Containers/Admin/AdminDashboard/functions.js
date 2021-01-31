@@ -23,6 +23,7 @@ const getDashboardData = (
       let dept = [];
       deptDb.once("value", (snapshot) => {
         let departments = snapshot.val();
+        console.log(departments);
         for (let data in departments) {
           if (departments[data].Doctors !== 0) {
             dept.push(departments[data]);
@@ -50,9 +51,6 @@ const getDashboardData = (
         // fetching number of patient from ID_Table
         patientDb.child("ID_Table").on("value", (snapshot) => {
           patientCount = snapshot.val();
-          if (patientCount == null) {
-            patientCount = {};
-          }
           setCount({
             verified: id_listV.length,
             nonVerified: id_listU.length,

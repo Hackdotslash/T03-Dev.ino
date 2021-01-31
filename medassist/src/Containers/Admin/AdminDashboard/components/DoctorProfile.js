@@ -205,7 +205,7 @@ export default function DoctorProfile(props) {
                   {docData.Verification_status !== 0 && (
                     <>
                       {/* Check doctor's transaction logs */}
-                      {/* <Grid item>
+                      <Grid item>
                         <Button
                           variant="contained"
                           color={"primary"}
@@ -214,7 +214,7 @@ export default function DoctorProfile(props) {
                         >
                           Check Transcation logs
                         </Button>
-                      </Grid> */}
+                      </Grid>
                       {/* Check doctor's patient logs */}
                       <Grid item>
                         <Button

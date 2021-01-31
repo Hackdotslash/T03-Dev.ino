@@ -55,12 +55,14 @@ export default function DashboardView(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   const deptData = props.count.departments;
   const [updatedCharges, setUpdatedCharges] = React.useState(props.charges);
-  const [open,setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const changeCharge = () => {
     updateCharges(updatedCharges);
     setOpen(true);
   };
+
+  console.log(props.count);
 
   return (
     <div>
@@ -72,7 +74,9 @@ export default function DashboardView(props) {
         }}
         anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
-        <Alert severity="success">Charges Updated! It will be reflected shortly</Alert>
+        <Alert severity="success">
+          Charges Updated! It will be reflected shortly
+        </Alert>
       </Snackbar>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6} lg={3}>
@@ -216,7 +220,7 @@ export default function DashboardView(props) {
               color="secondary"
               gutterBottom
             >
-              consultUS charges
+              medassit charges
             </Typography>
             <TextField
               color="secondary"
