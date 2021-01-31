@@ -22,9 +22,3 @@ Now the doctors are not limited to hospitals or cities, patients can get consult
 
 ## Techincal Details 
 We have used following tools and technologies 
-<br/>
- 
-<img src="https://cdn4.iconfinder.com/data/icons/google-i-o-2016/512/google_firebase-2-512.png" align="left" height="50" width="50">
-<img src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-256.png" align="left" height="48" width="48">
-<img src="https://avatars.githubusercontent.com/u/3671647?s=400&v=4" align="left" height="48" width="48">
-<img src="https://pbs.twimg.com/profile_images/1273938647297994753/2mvrQgmu.jpg" align="left" height="48" width="48"> 
