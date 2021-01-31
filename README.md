@@ -21,4 +21,19 @@ We Team Devino came up with solution Medassit, a virtual medical clinic, where p
 Now the doctors are not limited to hospitals or cities, patients can get consultation from doctors all over the country from the ease of their home. 
 
 ## Techincal Details 
+We have used following tools and technologies 
+
+### Firebase
+To manage user database and authentication
+
+### React 
+User interface design
+
+### Jitsi 
+For integrating video call 
+
+### EmailJs 
+For sending emails to paients and doctors
+
+
 
