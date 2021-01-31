@@ -35,5 +35,5 @@ For integrating video call
 ### EmailJs 
 For sending emails to paients and doctors
 
-
-
+### Paypal
+For payment integration 
