@@ -18,3 +18,7 @@ India's digital revolution is hugely propelled by the rural masses — rural Ind
 ### The idea we propose
 From the above stats, we concluded that its difficult to build hospitals and make doctor available everywhere. But the digital revolution can become a boon in improving healtcare facilities in rural areas. 
 We Team Devino came up with solution Medassit, a virtual medical clinic, where patients can book appointments, contact doctors, get prescriptions and all these facilities at their home.
+Now the doctors are not limited to hospitals or cities, patients can get consultation from doctors all over the country from the ease of their home. 
+
+## Techincal Details 
+
