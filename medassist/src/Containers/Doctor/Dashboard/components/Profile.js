@@ -241,7 +241,7 @@ export default function Profile(props) {
               variant="h6"
               style={{ textAlign: "center" }}
             >
-              Schedule
+              Schedule in GMT
             </Typography>
             <Typography
               gutterBottom
