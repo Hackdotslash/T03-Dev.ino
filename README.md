@@ -37,3 +37,7 @@ For sending emails to paients and doctors
 
 ### Paypal
 For payment integration 
+
+## Video
+<a href="https://youtu.be/MjcsPWZI4SM" target="_blank"><img src="https://youtu.be/5PD-as5R_6s" 
+alt="UltraviZ Demo Video" width="280" height="180" border="10" /></a>
