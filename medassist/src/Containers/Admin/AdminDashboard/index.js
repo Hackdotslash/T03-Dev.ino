@@ -24,7 +24,6 @@ import Doctor from "./components/Doctor";
 import Feedbacks from "./components/Feedbacks";
 import FinanceLogs from "./components/FinanceLogs";
 import DoctorLogs from "./components/DoctorLogs";
-import TransactionLogs from "./components/TransactionLogs";
 import PatientLog from "../../Doctor/Dashboard/components/PatientLog";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
@@ -164,9 +163,7 @@ export default function Dashboard(props) {
         );
 
       case 10:
-        return (
-          <TransactionLogs doctorProfileId={doctorProfileId} doctor={doctor} />
-        );
+        return <div>hey this is transaction</div>;
       case 11:
         return <PatientLog appData={doctor[doctorProfileId].PatientLog} />;
       default:
