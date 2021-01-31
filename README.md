@@ -39,5 +39,5 @@ For sending emails to paients and doctors
 For payment integration 
 
 ## Video
-<a href="https://youtu.be/MjcsPWZI4SM" target="_blank"><img src="https://youtu.be/5PD-as5R_6s" 
-alt="UltraviZ Demo Video" width="280" height="180" border="10" /></a>
+<a href="https://youtu.be/5PD-as5R_6s" target="_blank"><img src="https://github.com/Hackdotslash/T03-Dev.ino/blob/main/image.png" 
+alt="medassist Demo Video" width="280" height="180" border="10" /></a>
