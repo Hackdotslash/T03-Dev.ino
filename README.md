@@ -33,7 +33,7 @@ User interface design
 For integrating video call 
 
 ### EmailJs 
-For seding emails to paients and doctors
+For sending emails to paients and doctors
 
 
 
