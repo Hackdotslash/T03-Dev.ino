@@ -1,3 +1,10 @@
+// The code, idea and structure belongs to Team Dev.ino. No part of the code should be used
+// without concern of the team. 
+// Team Dev.ino reserves all rights over the code and idea and is bound to take actions in case 
+// the code is used without their permission
+
+
+
 import React from "react";
 import {
   Button,
